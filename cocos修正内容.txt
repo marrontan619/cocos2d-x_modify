@@ -1,0 +1,38 @@
+cocos2d-x.v3 javascriptのproj.androidの templateいじる
+
+### .cprojectを追加（コマンドは"build_native.py"に変更）
+
+
+### .project
+* リンクのソースパスを修正
+
+
+
+### jni/Application.mk
+エミュレータの処理速度向上のために、末尾に
+APP_ABI := armeabi x86
+を追記
+
+
+### build_native.py
+* インデントをスペースに統一
+* 作成したプロジェクトにコピーされるAPI(cocos2d)への参照を、フレームワークについてたものへの参照へ変更
+* ※cocos_root = os.path.join(current_dir, "../cocos2d") → sdk/tools/android→sdk/tools/android.bat
+
+ていうかもう結構いじったからdiffとろう。
+
+
+
+### 以下のファイルに "#include <string.h>"を追記
+** ./GL/mat4stack.c
+** ./mat3.c
+** ./mat4.c
+** ./quaternion.c
+** ./vec4.c
+
+
+
+調査中&残課題
+
+ビルドの時に出るエラー。
+
